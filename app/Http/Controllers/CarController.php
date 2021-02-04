@@ -30,4 +30,12 @@ class CarController extends Controller
         $car = Car::find($id);
         return response()->json($car);
     }
+
+    public function update($id, Request $request)
+    {
+        $car = Car::find($id);
+        $car->update($request->all());
+
+        return response()->json('The Car successfully updated');
+    }
 }

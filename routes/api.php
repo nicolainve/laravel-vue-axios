@@ -22,3 +22,4 @@ Route::get('cars', 'CarController@index');
 
 Route::post('car/add', 'CarController@add');
 Route::get('car/edit/{id}', 'CarController@edit');
+Route::post('car/update/{id}', 'CarController@update');
