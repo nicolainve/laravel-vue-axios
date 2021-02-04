@@ -7,15 +7,21 @@ use Illuminate\Http\Request;
 
 class CarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $cars = Car::all()->toArray();
         
         return array_reverse($cars);
+    }
+
+    public function add(Request $request)
+    {
+        $car = new Car([
+            'brand' => $request->input('brand'),
+            'model' => $request->input('model')
+        ]);
+        $car->save();
+
+        return response()->json('The Car successfully added');
     }
 }
