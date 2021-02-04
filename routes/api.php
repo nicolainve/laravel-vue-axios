@@ -20,7 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('cars', 'CarController@index');
 
-Route::post('car/add', 'CarController@add');
-Route::get('car/edit/{id}', 'CarController@edit');
-Route::post('car/update/{id}', 'CarController@update');
-Route::delete('car/delete/{id}', 'CarController@delete');
+Route::prefix('car')
+    ->group(function() {
+        Route::post('add', 'CarController@add');
+        Route::get('edit/{id}', 'CarController@edit');
+        Route::post('update/{id}', 'CarController@update');
+        Route::delete('delete/{id}', 'CarController@delete');
+    });
