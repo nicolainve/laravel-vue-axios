@@ -38,4 +38,12 @@ class CarController extends Controller
 
         return response()->json('The Car successfully updated');
     }
+
+    public function delete($id)
+    {
+        $car = Car::find($id);
+        $car->delete();
+
+        return response()->json('The Car successfully deleted');
+    }
 }

@@ -2034,6 +2034,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2046,6 +2047,20 @@ __webpack_require__.r(__webpack_exports__);
     this.axios.get('http://localhost:8000/api/cars').then(function (response) {
       _this.cars = response.data;
     });
+  },
+  methods: {
+    deleteCar: function deleteCar(id) {
+      var _this2 = this;
+
+      this.axios["delete"]("http://localhost:8000/api/car/delete/".concat(id)).then(function (response) {
+        var i = _this2.cars.map(function (item) {
+          return item.id;
+        }).indexOf(id); // find index of your object
+
+
+        _this2.cars.splice(i, 1);
+      });
+    }
   }
 });
 
@@ -37853,6 +37868,18 @@ var render = function() {
               "router-link",
               { attrs: { to: { name: "edit", params: { id: car.id } } } },
               [_vm._v("Edit")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.deleteCar(car.id)
+                  }
+                }
+              },
+              [_vm._v("Delete")]
             )
           ],
           1
