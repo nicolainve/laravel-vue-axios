@@ -2031,6 +2031,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2043,6 +2046,55 @@ __webpack_require__.r(__webpack_exports__);
     this.axios.get('http://localhost:8000/api/cars').then(function (response) {
       _this.cars = response.data;
     });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditCar.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditCar.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      car: {}
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    this.axios.get("http://localhost:8000/api/car/edit/".concat(this.$route.params.id)).then(function (response) {
+      _this.car = response.data;
+    });
+  },
+  methods: {
+    updateCar: function updateCar() {
+      var _this2 = this;
+
+      this.axios.post("http://localhost:8000/api/car/update/".concat(this.$route.params.id), this.car).then(function (response) {
+        _this2.$router.push({
+          name: 'home'
+        });
+      });
+    }
   }
 });
 
@@ -37791,11 +37843,109 @@ var render = function() {
       return _c("li", { key: car.id }, [
         _c("h2", [_vm._v(_vm._s(car.brand))]),
         _vm._v(" "),
-        _c("h3", [_vm._v(_vm._s(car.model))])
+        _c("h3", [_vm._v(_vm._s(car.model))]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { attrs: { role: "group" } },
+          [
+            _c(
+              "router-link",
+              { attrs: { to: { name: "edit", params: { id: car.id } } } },
+              [_vm._v("Edit")]
+            )
+          ],
+          1
+        )
       ])
     }),
     0
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditCar.vue?vue&type=template&id=68b7c9cf&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EditCar.vue?vue&type=template&id=68b7c9cf& ***!
+  \**********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "form",
+      {
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.updateCar($event)
+          }
+        }
+      },
+      [
+        _c("label", [_vm._v("Brand")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.car.brand,
+              expression: "car.brand"
+            }
+          ],
+          attrs: { type: "text" },
+          domProps: { value: _vm.car.brand },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.car, "brand", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", [_vm._v("Model")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.car.model,
+              expression: "car.model"
+            }
+          ],
+          attrs: { type: "text" },
+          domProps: { value: _vm.car.model },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.car, "model", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("button", { attrs: { type: "submit" } }, [_vm._v("Update Car")])
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -53409,6 +53559,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/EditCar.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/components/EditCar.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditCar_vue_vue_type_template_id_68b7c9cf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditCar.vue?vue&type=template&id=68b7c9cf& */ "./resources/js/components/EditCar.vue?vue&type=template&id=68b7c9cf&");
+/* harmony import */ var _EditCar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditCar.vue?vue&type=script&lang=js& */ "./resources/js/components/EditCar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditCar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditCar_vue_vue_type_template_id_68b7c9cf___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditCar_vue_vue_type_template_id_68b7c9cf___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/EditCar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/EditCar.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/EditCar.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditCar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./EditCar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditCar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditCar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/EditCar.vue?vue&type=template&id=68b7c9cf&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/EditCar.vue?vue&type=template&id=68b7c9cf& ***!
+  \****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditCar_vue_vue_type_template_id_68b7c9cf___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EditCar.vue?vue&type=template&id=68b7c9cf& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EditCar.vue?vue&type=template&id=68b7c9cf&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditCar_vue_vue_type_template_id_68b7c9cf___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditCar_vue_vue_type_template_id_68b7c9cf___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/routes.js":
 /*!********************************!*\
   !*** ./resources/js/routes.js ***!
@@ -53421,6 +53640,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routes", function() { return routes; });
 /* harmony import */ var _components_Cars_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Cars.vue */ "./resources/js/components/Cars.vue");
 /* harmony import */ var _components_AddCar_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/AddCar.vue */ "./resources/js/components/AddCar.vue");
+/* harmony import */ var _components_EditCar_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/EditCar.vue */ "./resources/js/components/EditCar.vue");
+
 
 
 var routes = [{
@@ -53431,6 +53652,10 @@ var routes = [{
   name: 'add',
   path: '/add',
   component: _components_AddCar_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+}, {
+  name: 'edit',
+  path: '/edit/:id',
+  component: _components_EditCar_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
 }];
 
 /***/ }),

@@ -1,5 +1,6 @@
 import Cars from './components/Cars.vue';
 import AddCar from './components/AddCar.vue';
+import EditCar from './components/EditCar.vue';
 
 export const routes = [
     {
@@ -12,4 +13,9 @@ export const routes = [
         path: '/add',
         component: AddCar
     },
+    {
+        name: 'edit',
+        path: '/edit/:id',
+        component: EditCar
+    }
 ];

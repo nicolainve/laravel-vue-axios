@@ -24,4 +24,10 @@ class CarController extends Controller
 
         return response()->json('The Car successfully added');
     }
+
+    public function edit($id)
+    {
+        $car = Car::find($id);
+        return response()->json($car);
+    }
 }

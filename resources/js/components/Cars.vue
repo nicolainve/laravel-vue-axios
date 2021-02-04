@@ -3,6 +3,9 @@
         <li v-for="car in cars" :key="car.id">
             <h2>{{ car.brand }}</h2>
             <h3>{{ car.model }}</h3>
+            <div role="group">
+                <router-link :to="{name: 'edit', params: { id: car.id }}">Edit</router-link>
+            </div>
         </li>
     </ul>
 </template>
